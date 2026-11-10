@@ -1,0 +1,30 @@
+{
+  "name": "dovies-site-blocker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "eslint src tests",
+    "format": "prettier --write src tests *.json *.mjs *.md",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "test:browser": "npm run build && node e2e/browser.mjs"
+  },
+  "dependencies": {
+    "tldts": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.24",
+    "@types/node": "^22.0.0",
+    "@eslint/js": "^9.0.0",
+    "typescript-eslint": "^8.0.0",
+    "eslint": "^9.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0",
+    "prettier": "^3.0.0",
+    "@playwright/test": "^1.56.0"
+  }
+}

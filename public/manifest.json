@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Dovie's Site Blocker",
+  "version": "1.0.0",
+  "description": "Unsubscribe from websites. Remember your decision, recognize their links, and reclaim your attention.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "contextMenus",
+    "declarativeNetRequestWithHostAccess",
+    "alarms"
+  ],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Dovie's Site Blocker"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["warning.html", "ui.js", "style.css"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuk9hH8ENFi2nCqgM1EQSiTWaypwrU2fJqonfZ1qOa+BgkgCia4i1TcPUgNkMb1rLmAsnBDjE6YCSF+yTs6DRaheYNz94MSJ774XZQjRgtE268V3s5i3Uwp3Woh7uwUtJuZTHdmw0eLE+j9UCF7dEWAmfhfiseWVonnVMIU9mZsDXeQRM2ZG3U98yPOkMJ2xCM+6dtySWW0fz8+sucbxgN7vIPU0/t7bFCmOAxeqzyYj/OmUHaJ1FE9P38+42brapCeQIluMuFcnW7vmDfzDaihwckMQn2n2Qj3O2HJZa8ycaYZGabXiBIH/rkp15bFPqH9aYAPWTRj4tfJAxeq9swQIDAQAB"
+}
